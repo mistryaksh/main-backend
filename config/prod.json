@@ -1,0 +1,7 @@
+{
+     "JWT_SECRET": "JSONWEBTOKENSECRET",
+     "DB_PATH": "mongodb+srv://wooinginspiration:wooinginspiration@cluster0.jrrb51n.mongodb.net",
+     "JWT_EXPIRE": "36000s",
+     "MAIL_USER": "mistryaksh1998@gmail.com",
+     "MAIL_PASS": "enodpuzndmsgspbr"
+}
