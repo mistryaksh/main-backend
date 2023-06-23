@@ -29,16 +29,6 @@ export class SubscriptionController implements IController {
                     return UnAuthorized(res, "invalid fields");
                }
 
-               await mailer.sendMail({
-                    from: config.get("MAIL_USER"),
-                    to: email,
-                    subject: "Hello you have subscribed with us",
-                    html: `
-                    <h1>You have subscripted with us.</h1>
-                    <p>${await email} is successfully registered with us, you will get notified every time whenever new offer's or any sale are on the line.</p>
-                    `,
-               });
-
                await new Subscription({
                     email,
                     message,

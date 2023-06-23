@@ -3,7 +3,6 @@ import { ProjectProps } from "types";
 
 const ProjectSchema = new mongoose.Schema<ProjectProps>(
      {
-          projectName: { type: mongoose.Schema.Types.String, required: true },
           projectDesc: { type: mongoose.Schema.Types.String, max: 2000, required: true },
           subCategory: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
           cost: { type: mongoose.Schema.Types.String, required: true },

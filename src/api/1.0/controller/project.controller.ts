@@ -38,9 +38,9 @@ export class ProjectController implements IController {
 
      public async NewProject(req: Request, res: Response) {
           try {
-               const { cost, deliveryTime, projectDesc, projectName, subCategory }: ProjectProps = req.body;
+               const { cost, deliveryTime, projectDesc, subCategory }: ProjectProps = req.body;
 
-               if (!cost || !deliveryTime || !projectDesc || !projectName || !subCategory) {
+               if (!cost || !deliveryTime || !projectDesc || !subCategory) {
                     return UnAuthorized(res, "missing fields");
                }
 
@@ -52,11 +52,10 @@ export class ProjectController implements IController {
                     cost,
                     deliveryTime,
                     projectDesc,
-                    projectName,
                     subCategory,
                }).save();
 
-               return Ok(res, `${(await NewProject).projectName} is uploaded`);
+               return Ok(res, `project is uploaded`);
           } catch (err) {
                return UnAuthorized(res, err);
           }
@@ -97,11 +96,11 @@ export class ProjectController implements IController {
 
                if (data.status === "active") {
                     await Project.findByIdAndUpdate({ _id: id }, { $set: { status: "pause" } });
-                    return Ok(res, `${data.projectName} status is updated`);
+                    return Ok(res, `project status is updated`);
                }
                if (data.status === "pause") {
                     await Project.findByIdAndUpdate({ _id: id }, { $set: { status: "active" } });
-                    return Ok(res, `${data.projectName} status is updated`);
+                    return Ok(res, `project status is updated`);
                }
           } catch (err) {
                return UnAuthorized(res, err);
@@ -110,7 +109,7 @@ export class ProjectController implements IController {
      public async DeleteProjectStatus(req: Request, res: Response) {
           try {
                const data = await Project.findByIdAndDelete({ _id: req.params.id });
-               return Ok(res, `${data.projectName} is deleted`);
+               return Ok(res, `project is deleted`);
           } catch (err) {
                return UnAuthorized(res, err);
           }

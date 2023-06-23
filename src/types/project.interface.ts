@@ -1,5 +1,4 @@
 export interface ProjectProps {
-     projectName: string;
      projectDesc: string;
      subCategory: string;
      cost: string;
